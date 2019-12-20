@@ -34,7 +34,7 @@ FB文章自動分享社團，但還是必須要使用一個帳號，來做為機
  
 事前必要準備
 =================
-1. 必須要下載Chrome
+1. 必須要下載Chrome。
 2. 若是在DOS沒有圖形化介面，也必須要下載Chrome。
 3. selenium工具的部分，還是要依照自己的OS做調整。
 4. [phantomjs檔案過大放不上來，請自行下載。](https://phantomjs.org/download.html)
@@ -135,7 +135,7 @@ fbtool.share_article(driver, groups=group, postURL=postURL)
 import facebook_tool as fbtool
 fbtool.share_photo(driver, groups=group, postURL=postURL)
 ```
-<img src="https://imgur.com/mQvKTLo.png"/>
+<img src="https://imgur.com/ifF0o38.png"/>
 
 ### 影片分享
 
@@ -145,7 +145,7 @@ fbtool.share_photo(driver, groups=group, postURL=postURL)
 import facebook_tool as fbtool
 fbtool.share_video(driver, groups=group, postURL=postURL)
 ```
-<img src="https://imgur.com/mQvKTLo.png"/>
+<img src="https://imgur.com/duyYYxr.png"/>
 
 
 檔案說明
