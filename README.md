@@ -12,16 +12,25 @@ FB文章自動分享社團，但還是必須要使用一個帳號，來做為機
 目錄
 =================
 * [事前必要準備](#事前必要準備)
-* [How to Use](#HowtoUse)
+* [變數說明](#變數說明)
    * [變數postURL](#變數postURL)
-   * [變數the_finance](#變數the_finance)
    * [變數useEmail](#變數useEmail)
    * [變數usePass](#變數usePass)
    * [變數useId](#變數useId)
+* [Function說明](#Function說明)
+* [範例](#範例)
+    * [參數準備](#參數準備)
+    * [chromedriver啟動](#chromedriver啟動)
+    * [文章分享](#文章分享)
+    * [圖片分享](#圖片分享)
+    * [影片分享](#影片分享)
 * [檔案說明](#檔案說明)
-    * [Windows/chromedriver](#Windowschromedriver)
+    * [Windows/chromedriver.exe](#Windowschromedriverexe)
+    * [Windows/phantomjs.exe](#Windowsphantomjsexe)
     * [Linux/chromedriver](#Linuxchromedriver)
-    * [FB自動發文](#FB自動發文)
+    * [Linux/phantomjs](#Linuxphantomjs)
+    * [FB自動發文.py](#FB自動發文py)
+    * [facebook_tool.py](#facebook_toolpy)
  
 事前必要準備
 =================
@@ -32,10 +41,8 @@ FB文章自動分享社團，但還是必須要使用一個帳號，來做為機
 5. phantomjs下載完以後，請依照作業系統擺放，如下圖。
 <img src="https://i.imgur.com/vxk2PXt.png"/>
 
-6. 此檔案是在Windows上面建立的，因此連結的打在Linux等作業系統是需要做調整的，需要將反斜線改成正斜線（39、47行）。
-<img src="https://imgur.com/yRRG4i4.png"/>
 
-How to Use
+變數說明
 =================
 
 ### 變數postURL
@@ -54,10 +61,6 @@ How to Use
 
 <img src="https://imgur.com/HFiXy05.png"/>
 
-### 變數the_finance
-
-此變數用來控制你的社團分類，就以此專案的例子來說，有些文章會發到財金方面的社團，但如果與財金不相關的文章，發到該社團，可能管理員會將您踢出，因此做這樣的分類。
-
 ### 變數useEmail
 
 使用者的Email，當然若您的FB有設定電話，也可以用電話登入。
@@ -74,14 +77,86 @@ How to Use
 
 <img src="https://imgur.com/GAW5GJi.png"/>
 
+Function說明
+=================
+
+範例
+=================
+以下範例程式碼可以在FB自動發文.py中找到。
+
+### 變數usePass
+
+設定所有所需的參數，若不清楚如何取得這些參數內容，請參考[變數說明](#變數說明)。
+
+```
+# 想發的文章
+postURL = '您想發的文章'
+# 登入帳號的Email
+useEmail = '您的FB帳號'
+# 登入帳號的Pass
+usePass = '您的FB密碼'
+# 登入帳號的ID
+useId = '您的個人數字ID'
+```
+
+### chromedriver啟動
+
+啟動後便會自動登入FB，因此帳號密碼必須事先準備好。利用get_group()方法進到該帳號的社團中，爬取所有社團的名稱，其中catch的參數設定，將您想要發的社團名稱進行篩選，例如範例為「廣告|行銷」，代表社團名稱中有廣告、行銷等字眼，就會被抓取到。
+
+```
+import facebook_tool as fbtool
+driver = fbtool.login(useEmail = useEmail, usePass = usePass)
+group = fbtool.get_group(driver, useId=useId, catch='廣告|行銷')
+```
+
+### 文章分享
+
+一般如下圖的文章，用此方式分享。
+
+```
+import facebook_tool as fbtool
+fbtool.share_article(driver, groups=group, postURL=postURL)
+```
+<img src="https://imgur.com/mQvKTLo.png"/>
+
+### 圖片分享
+
+圖片類型的文章，會出現類似劇院模式，因此程式必須做調整。
+
+```
+import facebook_tool as fbtool
+fbtool.share_photo(driver, groups=group, postURL=postURL)
+```
+<img src="https://imgur.com/mQvKTLo.png"/>
+
+### 影片分享
+
+影片類型的文章通常下面還有有別的影片，但您要發送的影片都會在第一個。
+
+```
+import facebook_tool as fbtool
+fbtool.share_video(driver, groups=group, postURL=postURL)
+```
+<img src="https://imgur.com/mQvKTLo.png"/>
+
+
 檔案說明
 =================
 
-### Windows/chromedriver
-Windows系統的chrome模擬器，64位元，若無法執行請自行另外做調整
+### Windows/chromedriver.exe
+Windows系統的chrome模擬器，64位元，若無法執行請自行另外做調整。
+
+### Windows/phantomjs.exe
+Windows系統的phantomjs，64位元，若無法執行請自行另外做調整。
 
 ### Linux/chromedriver
-Linux系統的chrome模擬器，64位元，若無法執行請自行另外做調整
+Linux系統的chrome模擬器，64位元，若無法執行請自行另外做調整。
 
-### FB自動發文
-主程式部分
+### Linux/phantomjs
+Linux系統的phantomjs，64位元，若無法執行請自行另外做調整。
+
+### FB自動發文.py
+主程式部分。
+
+### facebook_tool.py
+所有功能function。
