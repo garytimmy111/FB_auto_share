@@ -79,6 +79,14 @@ FB文章自動分享社團，但還是必須要使用一個帳號，來做為機
 
 Function說明
 =================
+| 方法名稱      | 變數     | 說明     |
+| ---------- | :-----------:  | :-----------: |
+| login     |   useEmail = '帳號' <br> usePass = '密碼'   | 開啟chromedriver並且登入。     |
+| get_group     |  driver <br> useId='你的使用者ID' <br> catch='金融    | 財務     |
+| share_article     |   driver <br> groups=['想發文的社團名稱'] <br> postURL='圖片網址'   | 自動分享文字形文章。     |
+| share_photo     |  driver <br> groups=['想發文的社團名稱'] <br> postURL='圖片網址'    | 自動分享圖片形文章。     |
+| share_video     |  driver <br> groups=['想發文的社團名稱'] <br> postURL='圖片網址'    | 自動分享影片形文章。     |
+| share_article_on_your_page     |  driver <br> postURL='文章網址'    | 分享到您的專欄。     |
 
 範例
 =================
