@@ -14,7 +14,7 @@ FB文章自動分享社團，但還是必須要使用一個帳號，來做為機
 * [事前必要準備](#事前必要準備)
 * [範例](#範例)
     * [Console介面直接執行](#Console介面直接執行)
-    * [chromedriver啟動](#chromedriver啟動)
+    * [程式碼執行](#程式碼執行)
     * [文章分享](#文章分享)
     * [圖片分享](#圖片分享)
     * [影片分享](#影片分享)
@@ -54,7 +54,7 @@ python facebook_tool.py
 
 <img src="https://imgur.com/JgQB7xW.png"/>
 
-4. 輸入您想要的社團關鍵字，此功能能避開部分社團不發送。假設您想要發送金融相關社團，而社團名稱中都有出現「股票」、「期貨」，那您就可以輸入「股票 期貨」，中間以空白分隔。
+4. 輸入您想要的社團關鍵字，此功能能避開部分社團不發送。假設您想要發送金融相關社團，而社團名稱中都有出現「股票」、「期貨」，那您就可以輸入「股票 期貨」，中間以空白分隔。若全部社團都想要發，則直接Enter就好了。
 
 <img src="https://imgur.com/LuEUhof.png"/>
 
@@ -62,44 +62,41 @@ python facebook_tool.py
 
 <img src="https://imgur.com/tqc1G0f.png"/>
 
-### chromedriver啟動
+### 程式碼執行
 
-啟動後便會自動登入FB，因此帳號密碼必須事先準備好。利用get_group()方法進到該帳號的社團中，爬取所有社團的名稱，其中catch的參數設定，將您想要發的社團名稱進行篩選，例如範例為「廣告|行銷」，代表社團名稱中有廣告、行銷等字眼，就會被抓取到。
-
-```
-import facebook_tool as fbtool
-driver = fbtool.login(useEmail = useEmail, usePass = usePass)
-group = fbtool.get_group(driver, useId=useId, catch='廣告|行銷')
-```
-
-### 文章分享
-
-一般如下圖的文章，用此方式分享。
+1. 此處的範例可以參考FB自動發文.py檔案，裡面有完整程式碼。首先引入facebook_tool.py檔案，而後執行share物件，並傳送參數帳號、密碼、關鍵字、文章連結。
 
 ```
-import facebook_tool as fbtool
-fbtool.share_article(driver, groups=group, postURL=postURL)
+gg=fbtool.share( 
+        useEmail='您的FB帳號', 
+        usePass='您的FB密碼', 
+        catch ='廣告|行銷', 
+        postURL = 'https://www.facebook.com/MarketingDataScienceTMR/posts/221821808488524'
+        )
+```
+
+ 
+
+2. 文章分享,一般如下圖的文章，用此方式分享。
+
+```
+gg.share_article()
 ```
 <img src="https://imgur.com/mQvKTLo.png"/>
-
-### 圖片分享
 
 圖片類型的文章，會出現類似劇院模式，因此程式必須做調整。
 
 ```
-import facebook_tool as fbtool
-fbtool.share_photo(driver, groups=group, postURL=postURL)
+gg.share_photo()
 ```
 <img src="https://imgur.com/ifF0o38.png"/>
-
-### 影片分享
 
 影片類型的文章通常下面還有有別的影片，但您要發送的影片都會在第一個。
 
 ```
-import facebook_tool as fbtool
-fbtool.share_video(driver, groups=group, postURL=postURL)
+gg.share_video()
 ```
+
 <img src="https://imgur.com/duyYYxr.png"/>
 
 
