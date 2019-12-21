@@ -104,19 +104,19 @@ gg.share_video()
 =================
 
 ### Windows/chromedriver.exe
-Windows系統的chrome模擬器，64位元，若無法執行請自行另外做調整。
+Windows系統的chrome模擬器，64位元，若無法執行請自行另外做調整[下載](https://chromedriver.chromium.org/downloads)。
 
 ### Windows/phantomjs.exe
-Windows系統的phantomjs，64位元，若無法執行請自行另外做調整。
+Windows系統的phantomjs，64位元，若無法執行請自行另外做調整[下載](https://phantomjs.org/download.html)。
 
 ### Linux/chromedriver
-Linux系統的chrome模擬器，64位元，若無法執行請自行另外做調整。
+Linux系統的chrome模擬器，64位元，若無法執行請自行另外做調整[下載](https://chromedriver.chromium.org/downloads)。
 
 ### Linux/phantomjs
-Linux系統的phantomjs，64位元，若無法執行請自行另外做調整。
+Linux系統的phantomjs，64位元，若無法執行請自行另外做調整[下載](https://phantomjs.org/download.html)。
 
 ### FB自動發文.py
-主程式部分。
+利用facebook_tool.py檔案內的物件達到自動發文功能，比較有活性，若要定期且長期使用，建議可以使用此方式，並將帳號密碼寫入，減少重複性工作。
 
 ### facebook_tool.py
-所有功能function。
+所有功能function，也可以使用console介面執行，若是使用[Anaconda](https://www.anaconda.com/distribution/)執行Python者，請使用[Anaconda prompt](https://www.anaconda.com/distribution/)，MAC電腦直接使用終端機（terminal）即可。若Windows有安裝Python者，也可以直接在cmd執行，若沒有，建議[下載Anaconda](https://www.anaconda.com/distribution/)來執行。
