@@ -12,14 +12,8 @@ FB文章自動分享社團，但還是必須要使用一個帳號，來做為機
 目錄
 =================
 * [事前必要準備](#事前必要準備)
-* [變數說明](#變數說明)
-   * [變數postURL](#變數postURL)
-   * [變數useEmail](#變數useEmail)
-   * [變數usePass](#變數usePass)
-   * [變數useId](#變數useId)
-* [Function說明](#Function說明)
 * [範例](#範例)
-    * [參數準備](#參數準備)
+    * [Console介面直接執行](#Console介面直接執行)
     * [chromedriver啟動](#chromedriver啟動)
     * [文章分享](#文章分享)
     * [圖片分享](#圖片分享)
@@ -34,71 +28,39 @@ FB文章自動分享社團，但還是必須要使用一個帳號，來做為機
  
 事前必要準備
 =================
-1. 必須要下載Chrome。
-2. 若是在DOS沒有圖形化介面，也必須要下載Chrome。
-3. selenium工具的部分，還是要依照自己的OS做調整。
-4. [phantomjs檔案過大放不上來，請自行下載。](https://phantomjs.org/download.html)
+1. 必須要下載Chrome，若是在DOS沒有圖形化介面，也必須要下載Chrome。
+2. [ChromeDriver請依照自己Chrome的版本進行下載](https://chromedriver.chromium.org/downloads)，若不知道自己Chrome，可以[到這裡進行查看](https://chromedriver.storage.googleapis.com/LATEST_RELEASE)。
+4. [phantomjs若版本不合，請自行下載。](https://phantomjs.org/download.html)
 5. phantomjs下載完以後，請依照作業系統擺放，如下圖。
 <img src="https://i.imgur.com/vxk2PXt.png"/>
-
-
-變數說明
-=================
-
-### 變數postURL
-
-想要發的文章網址，為了防止網頁中有多餘的文章，導致分享錯文章，請依照以下方式找到文章絕對網址。
-
-1. 點選文章右上角的選單，選擇`嵌入`，如果沒有就在更多選項裡面。
-
-<img src="https://imgur.com/Ha9s5By.png"/>
-
-2. 選擇進階設定。
-
-<img src="https://imgur.com/tYohPum.png"/>
-
-3. 紅框內即是該文章的完整網址。
-
-<img src="https://imgur.com/HFiXy05.png"/>
-
-### 變數useEmail
-
-使用者的Email，當然若您的FB有設定電話，也可以用電話登入。
-
-### 變數usePass
-
-使用者的密碼，因此這個檔案小心不要給別人，否則他就知道你的FB登入帳密了。
-
-
-Function說明
-=================
-| 方法名稱      | 變數     | 說明     |
-| ---------- | :-----------:  | :-----------: |
-| login     |   useEmail = '帳號' <br> usePass = '密碼'   | 開啟chromedriver並且登入。     |
-| get_group     |  driver <br> useId='你的使用者ID' <br> catch='金融    | 財務     |
-| share_article     |   driver <br> groups=['想發文的社團名稱'] <br> postURL='圖片網址'   | 自動分享文字形文章。     |
-| share_photo     |  driver <br> groups=['想發文的社團名稱'] <br> postURL='圖片網址'    | 自動分享圖片形文章。     |
-| share_video     |  driver <br> groups=['想發文的社團名稱'] <br> postURL='圖片網址'    | 自動分享影片形文章。     |
-| share_article_on_your_page     |  driver <br> postURL='文章網址'    | 分享到您的專欄。     |
 
 範例
 =================
 以下範例程式碼可以在FB自動發文.py中找到。
 
-### 變數usePass
+### Console介面直接執行
 
-設定所有所需的參數，若不清楚如何取得這些參數內容，請參考[變數說明](#變數說明)。
+1. cd到facebook_tool.py的目錄上，執行檔案。
 
 ```
-# 想發的文章
-postURL = '您想發的文章'
-# 登入帳號的Email
-useEmail = '您的FB帳號'
-# 登入帳號的Pass
-usePass = '您的FB密碼'
-# 登入帳號的ID
-useId = '您的個人數字ID'
+python facebook_tool.py
 ```
+
+2. 輸入您的FB帳號。
+
+<img src="https://imgur.com/7Ms1rJL.png"/>
+
+3. 輸入您的FB密碼。
+
+<img src="https://imgur.com/JgQB7xW.png"/>
+
+4. 輸入您想要的社團關鍵字，此功能能避開部分社團不發送。假設您想要發送金融相關社團，而社團名稱中都有出現「股票」、「期貨」，那您就可以輸入「股票 期貨」，中間以空白分隔。
+
+<img src="https://imgur.com/LuEUhof.png"/>
+
+5. 輸入您想要發送的文章，目前支援一般PO文、圖片、影片。
+
+<img src="https://imgur.com/tqc1G0f.png"/>
 
 ### chromedriver啟動
 
