@@ -159,7 +159,7 @@ class share(startSelenium):
             time.sleep(random.randint(7,15))
             # 發布
             self.driver.find_element_by_xpath('//*[@data-testid="react_share_dialog_post_button"]').click()
-            time.sleep(random.randint(2,7))
+            time.sleep(random.randint(60,120))
         self.driver.quit()
             
             
@@ -193,7 +193,7 @@ class share(startSelenium):
             time.sleep(random.randint(7,15))
             # 發布
             self.driver.find_elements_by_xpath('//*[@data-testid="react_share_dialog_post_button"]')[5].click()
-            time.sleep(random.randint(3,10))
+            time.sleep(random.randint(60,120))
         self.driver.quit()
             
             
@@ -219,7 +219,7 @@ class share(startSelenium):
             
             length = len(self.driver.find_element_by_xpath('//*[@aria-label="搜尋社團"]').get_attribute('value')) #抓到欲刪除的欄位數量
             self.driver.find_element_by_xpath('//*[@aria-label="搜尋社團"]').send_keys(length * Keys.BACKSPACE) #案幾次刪除
-            time.sleep(random.randint(3,10))
+            time.sleep(random.randint(60,120))
         self.driver.quit()
     
     
